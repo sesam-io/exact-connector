@@ -1,0 +1,19 @@
+{
+  "additional_parameters": {
+    "token_url": {}
+  },
+  "auth": "oauth2",
+  "datatypes": {
+    "accounts": {
+      "label": "Accounts",
+      "template": "templates/accounts.json"
+    }
+  },
+  "oauth2": {
+    "login_url": "https://start.exactonline.nl/api/oauth2/auth",
+    "scopes": [],
+    "token_url": "https://start.exactonline.nl/api/oauth2/token"
+  },
+  "system": "Exact",
+  "system-template": "templates/system.json"
+}
