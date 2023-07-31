@@ -15,24 +15,19 @@
       },
       "id_expression": "{{ ID }}",
       "method": "GET",
-      "payload_property": "d",
-      "url": "sync/CRM/Accounts?$top=1"
+      "payload_property": "d.results",
+      "url": "CRM/Accounts"
     },
-    "insert": {
+    "accounts-lookup": {
       "headers": {
         "Accept": "application/json"
       },
-      "id_expression": "{{ ID }}",
-      "method": "POST",
-      "url": "sync/CRM/Accounts"
-    },
-    "lookup": {
       "method": "GET",
-      "payload_property": "d",
-      "url": "CRM/Accounts?$select=ID"
+      "payload_property": "d.results",
+      "url": "CRM/Accounts?$filter=ID eq guid'{{ entity.ID }}'"
     }
   },
   "type": "system:rest",
-  "url_pattern": "https://start.exactonline.nl/api/v1/3529691/%s",
-  "verify_ssl": true
+  "url_pattern": "https://start.exactonline.co.uk/api/v1/128132/%s",
+  "verify_ssl": false
 }
