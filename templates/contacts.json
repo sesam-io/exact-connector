@@ -1,0 +1,91 @@
+[
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-collect",
+    "namespaced_identifiers": false,
+    "source": {
+      "operation": "list",
+      "properties": {
+        "datatype": "Contacts"
+      },
+      "system": "{{@ system @}}",
+      "type": "rest"
+    },
+    "type": "pipe"
+  },
+  {
+    "_id": "{{@ system @}}-{{@ datatype @}}-share",
+    "add_namespaces": false,
+    "batch_size": 1,
+    "compaction": {
+      "keep_versions": 100
+    },
+    "exclude_completeness": [
+      "{{@ system @}}-{{@ datatype @}}-share"
+    ],
+    "namespaced_identifiers": false,
+    "sink": {
+      "deletion_tracking": false,
+      "set_initial_offset": "onload"
+    },
+    "source": {
+      "dataset": "{{@ system @}}-{{@ datatype @}}-transform",
+      "type": "dataset"
+    },
+    "transform": [
+      {
+        "rules": {
+          "based-on": [
+            [
+              "copy",
+              "*",
+              [
+                "list",
+                "_*",
+                "$*"
+              ]
+            ]
+          ],
+          "default": [
+            [
+              "add",
+              "$based_on",
+              [
+                "apply",
+                "based-on",
+                "_S."
+              ]
+            ],
+            [
+              "copy",
+              "*"
+            ]
+          ]
+        },
+        "type": "dtl"
+      },
+      {
+        "properties": {
+          "operation_delete_properties": {
+            "datatype": "Contacts"
+          },
+          "operation_insert_properties": {
+            "datatype": "Contacts"
+          },
+          "operation_lookup_properties": {
+            "datatype": "Contacts"
+          },
+          "operation_update_properties": {
+            "datatype": "Contacts"
+          },
+          "primary_key": "ID",
+          "rest_system": "{{@ system @}}",
+          "share_dataset": "{{@ system @}}-{{@ datatype @}}-share"
+        },
+        "template": "transform-share-rest",
+        "trace": true,
+        "type": "template"
+      }
+    ],
+    "type": "pipe"
+  }
+]

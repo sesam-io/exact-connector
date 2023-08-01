@@ -9,14 +9,47 @@
     "token_url": "{{@ token_url @}}"
   },
   "operations": {
-    "accounts-list": {
+    "delete": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "DELETE",
+      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
+    },
+    "insert": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "POST",
+      "payload_property": "d",
+      "url": "CRM/{{ properties.datatype }}"
+    },
+    "list": {
       "headers": {
         "Accept": "application/json"
       },
       "id_expression": "{{ ID }}",
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/Accounts"
+      "url": "CRM/{{ properties.datatype }}"
+    },
+    "lookup": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "method": "GET",
+      "payload_property": "d.results",
+      "url": "CRM/{{ properties.datatype }}?$filter=ID eq guid'{{ entity.ID }}'"
+    },
+    "update": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "PUT",
+      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
     }
   },
   "type": "system:rest",
