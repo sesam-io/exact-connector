@@ -3,7 +3,7 @@
     "_id": "{{@ system @}}-{{@ datatype @}}-collect",
     "namespaced_identifiers": false,
     "source": {
-      "operation": "accounts-list",
+      "operation": "{{@ datatype @}}-list",
       "system": "{{@ system @}}",
       "type": "rest"
     },
@@ -62,10 +62,20 @@
       },
       {
         "properties": {
+          "operation_delete": "{{@ datatype @}}-delete",
+          "operation_delete_properties": {
+            "datatype": "{{@ datatype @}}"
+          },
+          "operation_insert": "{{@ datatype @}}-insert",
           "operation_insert_properties": {
             "datatype": "{{@ datatype @}}"
           },
+          "operation_lookup": "{{@ datatype @}}-lookup",
           "operation_lookup_properties": {
+            "datatype": "{{@ datatype @}}"
+          },
+          "operation_update": "{{@ datatype @}}-update",
+          "operation_update_properties": {
             "datatype": "{{@ datatype @}}"
           },
           "primary_key": "ID",
