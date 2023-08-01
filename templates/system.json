@@ -25,6 +25,15 @@
       "method": "GET",
       "payload_property": "d.results",
       "url": "CRM/Accounts?$filter=ID eq guid'{{ entity.ID }}'"
+    },
+    "contacts-list": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "GET",
+      "payload_property": "d.results",
+      "url": "CRM/Contacts"
     }
   },
   "type": "system:rest",
