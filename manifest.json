@@ -4,6 +4,9 @@
   },
   "auth": "oauth2",
   "datatypes": {
+    "accounts": {
+      "template": "templates/accounts.json"
+    },
     "contacts": {
       "template": "templates/contacts.json"
     }
