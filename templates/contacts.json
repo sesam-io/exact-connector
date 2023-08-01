@@ -3,7 +3,10 @@
     "_id": "{{@ system @}}-{{@ datatype @}}-collect",
     "namespaced_identifiers": false,
     "source": {
-      "operation": "{{@ datatype @}}-list",
+      "operation": "list",
+      "properties": {
+        "datatype": "Contacts"
+      },
       "system": "{{@ system @}}",
       "type": "rest"
     },
@@ -62,21 +65,17 @@
       },
       {
         "properties": {
-          "operation_delete": "{{@ datatype @}}-delete",
           "operation_delete_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "Contacts"
           },
-          "operation_insert": "{{@ datatype @}}-insert",
           "operation_insert_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "Contacts"
           },
-          "operation_lookup": "{{@ datatype @}}-lookup",
           "operation_lookup_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "Contacts"
           },
-          "operation_update": "{{@ datatype @}}-update",
           "operation_update_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "Contacts"
           },
           "primary_key": "ID",
           "rest_system": "{{@ system @}}",

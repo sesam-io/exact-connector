@@ -9,64 +9,47 @@
     "token_url": "{{@ token_url @}}"
   },
   "operations": {
-    "accounts-list": {
-      "headers": {
-        "Accept": "application/json"
-      },
-      "id_expression": "{{ ID }}",
-      "method": "GET",
-      "payload_property": "d.results",
-      "url": "CRM/Accounts"
-    },
-    "accounts-lookup": {
-      "headers": {
-        "Accept": "application/json"
-      },
-      "method": "GET",
-      "payload_property": "d.results",
-      "url": "CRM/Accounts?$filter=ID eq guid'{{ entity.ID }}'"
-    },
-    "contacts-delete": {
+    "delete": {
       "headers": {
         "Accept": "application/json"
       },
       "id_expression": "{{ ID }}",
       "method": "DELETE",
-      "url": "CRM/Contacts(guid'{{ entity.ID }}')"
+      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
     },
-    "contacts-insert": {
+    "insert": {
       "headers": {
         "Accept": "application/json"
       },
       "id_expression": "{{ ID }}",
       "method": "POST",
       "payload_property": "d",
-      "url": "CRM/Contacts"
+      "url": "CRM/{{ properties.datatype }}"
     },
-    "contacts-list": {
+    "list": {
       "headers": {
         "Accept": "application/json"
       },
       "id_expression": "{{ ID }}",
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/Contacts"
+      "url": "CRM/{{ properties.datatype }}"
     },
-    "contacts-lookup": {
+    "lookup": {
       "headers": {
         "Accept": "application/json"
       },
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/Contacts?$filter=ID eq guid'{{ entity.ID }}'"
+      "url": "CRM/{{ properties.datatype }}?$filter=ID eq guid'{{ entity.ID }}'"
     },
-    "contacts-update": {
+    "update": {
       "headers": {
         "Accept": "application/json"
       },
       "id_expression": "{{ ID }}",
       "method": "PUT",
-      "url": "CRM/Contacts(guid'{{ entity.ID }}')"
+      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
     }
   },
   "type": "system:rest",
