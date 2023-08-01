@@ -26,6 +26,23 @@
       "payload_property": "d.results",
       "url": "CRM/Accounts?$filter=ID eq guid'{{ entity.ID }}'"
     },
+    "contacts-delete": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "DELETE",
+      "url": "CRM/Contacts(guid'{{ entity.ID }}')"
+    },
+    "contacts-insert": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "POST",
+      "payload_property": "d",
+      "url": "CRM/Contacts"
+    },
     "contacts-list": {
       "headers": {
         "Accept": "application/json"
@@ -34,6 +51,22 @@
       "method": "GET",
       "payload_property": "d.results",
       "url": "CRM/Contacts"
+    },
+    "contacts-lookup": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "method": "GET",
+      "payload_property": "d.results",
+      "url": "CRM/Contacts?$filter=ID eq guid'{{ entity.ID }}'"
+    },
+    "contacts-update": {
+      "headers": {
+        "Accept": "application/json"
+      },
+      "id_expression": "{{ ID }}",
+      "method": "PUT",
+      "url": "CRM/Contacts(guid'{{ entity.ID }}')"
     }
   },
   "type": "system:rest",
