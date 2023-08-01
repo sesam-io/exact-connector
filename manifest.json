@@ -4,9 +4,8 @@
   },
   "auth": "oauth2",
   "datatypes": {
-    "accounts": {
-      "label": "Accounts",
-      "template": "templates/accounts.json"
+    "contacts": {
+      "template": "templates/contacts.json"
     }
   },
   "oauth2": {
