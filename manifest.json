@@ -9,6 +9,9 @@
     },
     "contacts": {
       "template": "templates/contacts.json"
+    },
+    "purchaseinvoices": {
+      "template": "templates/purchaseinvoices.json"
     }
   },
   "oauth2": {
