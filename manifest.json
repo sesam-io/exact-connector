@@ -4,11 +4,17 @@
   },
   "auth": "oauth2",
   "datatypes": {
-    "Accounts": {
-      "template": "templates/contacts.json"
+    "accounts": {
+      "template": "templates/contacts.json",
+      "parameters": {
+        "endpoint": "Accounts"
+      }
     },
-    "Contacts": {
-      "template": "templates/contacts.json"
+    "contacts": {
+      "template": "templates/contacts.json",
+      "parameters": {
+        "endpoint": "Contacts"
+      }
     }
   },
   "oauth2": {
