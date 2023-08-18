@@ -5,16 +5,16 @@
   "auth": "oauth2",
   "datatypes": {
     "accounts": {
-      "template": "templates/contacts.json",
       "parameters": {
         "endpoint": "Accounts"
-      }
+      },
+      "template": "templates/contacts.json"
     },
     "contacts": {
-      "template": "templates/contacts.json",
       "parameters": {
         "endpoint": "Contacts"
-      }
+      },
+      "template": "templates/contacts.json"
     }
   },
   "oauth2": {

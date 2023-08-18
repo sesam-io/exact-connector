@@ -10,6 +10,30 @@
       "system": "{{@ system @}}",
       "type": "rest"
     },
+    "transform": {
+      "rules": {
+        "default": [
+          [
+            "copy",
+            "*"
+          ],
+          ["add", "$last_modified",
+          ["datetime",
+            ["integer",
+              ["multiply",
+                ["integer",
+                  ["replace", {
+                    ")/": "",
+                    "/Date(": ""
+                  }, "_S.Modified"]
+                ], 1000000]
+            ]
+          ]
+        ]
+        ]
+      },
+      "type": "dtl"
+    },
     "type": "pipe"
   },
   {
@@ -31,38 +55,7 @@
       "dataset": "{{@ system @}}-{{@ datatype @}}-transform",
       "type": "dataset"
     },
-    "transform": [
-      {
-        "rules": {
-          "based-on": [
-            [
-              "copy",
-              "*",
-              [
-                "list",
-                "_*",
-                "$*"
-              ]
-            ]
-          ],
-          "default": [
-            [
-              "add",
-              "$based_on",
-              [
-                "apply",
-                "based-on",
-                "_S."
-              ]
-            ],
-            [
-              "copy",
-              "*"
-            ]
-          ]
-        },
-        "type": "dtl"
-      },
+    "transform": 
       {
         "properties": {
           "operation_delete_properties": {
@@ -84,7 +77,7 @@
         "template": "transform-share-rest",
         "type": "template"
       }
-    ],
+    ,
     "type": "pipe"
   }
 ]
