@@ -5,7 +5,7 @@
     "source": {
       "operation": "list",
       "properties": {
-        "datatype": "Contacts"
+        "datatype": "{{@ datatype @}}"
       },
       "system": "{{@ system @}}",
       "type": "rest"
@@ -66,23 +66,22 @@
       {
         "properties": {
           "operation_delete_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{@ datatype @}}"
           },
           "operation_insert_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{@ datatype @}}"
           },
           "operation_lookup_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{@ datatype @}}"
           },
           "operation_update_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{@ datatype @}}"
           },
           "primary_key": "ID",
           "rest_system": "{{@ system @}}",
           "share_dataset": "{{@ system @}}-{{@ datatype @}}-share"
         },
         "template": "transform-share-rest",
-        "trace": true,
         "type": "template"
       }
     ],
