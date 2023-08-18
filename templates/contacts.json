@@ -5,7 +5,7 @@
     "source": {
       "operation": "list",
       "properties": {
-        "datatype": "{{@ datatype @}}"
+        "datatype": "{{@ endpoint @}}"
       },
       "system": "{{@ system @}}",
       "type": "rest"
@@ -66,16 +66,16 @@
       {
         "properties": {
           "operation_delete_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "{{@ endpoint @}}"
           },
           "operation_insert_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "{{@ endpoint @}}"
           },
           "operation_lookup_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "{{@ endpoint @}}"
           },
           "operation_update_properties": {
-            "datatype": "{{@ datatype @}}"
+            "datatype": "{{@ endpoint @}}"
           },
           "primary_key": "ID",
           "rest_system": "{{@ system @}}",
