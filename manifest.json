@@ -4,10 +4,10 @@
   },
   "auth": "oauth2",
   "datatypes": {
-    "accounts": {
-      "template": "templates/accounts.json"
+    "Accounts": {
+      "template": "templates/contacts.json"
     },
-    "contacts": {
+    "Contacts": {
       "template": "templates/contacts.json"
     }
   },
