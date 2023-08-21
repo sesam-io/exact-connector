@@ -5,13 +5,25 @@
   "auth": "oauth2",
   "datatypes": {
     "accounts": {
-      "template": "templates/accounts.json"
+      "template": "templates/contacts.json",
+      "properties": {
+        "endpoint": "Accounts",
+        "endpoint_type": "CRM"
+      }
     },
     "contacts": {
-      "template": "templates/contacts.json"
+      "template": "templates/contacts.json",
+      "properties": {
+        "endpoint": "Contacts",
+        "endpoint_type": "CRM"
+      }
     },
     "purchaseinvoices": {
-      "template": "templates/purchaseinvoices.json"
+      "template": "templates/contacts.json",
+      "properties": {
+        "endpoint": "PurchaseInvoices",
+        "endpoint_type": "purchase"
+      }
     }
   },
   "oauth2": {

@@ -15,7 +15,7 @@
       },
       "id_expression": "{{ ID }}",
       "method": "DELETE",
-      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}(guid'{{ entity.ID }}')"
     },
     "insert": {
       "headers": {
@@ -24,7 +24,7 @@
       "id_expression": "{{ ID }}",
       "method": "POST",
       "payload_property": "d",
-      "url": "CRM/{{ properties.datatype }}"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}"
     },
     "list": {
       "headers": {
@@ -33,16 +33,7 @@
       "id_expression": "{{ ID }}",
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/{{ properties.datatype }}"
-    },
-    "list_purchaseinvoices": {
-      "headers": {
-        "Accept": "application/json"
-      },
-      "id_expression": "{{ ID }}",
-      "method": "GET",
-      "payload_property": "d.results",
-      "url": "purchase/{{ properties.datatype }}?$select=*"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}"
     },
     "lookup": {
       "headers": {
@@ -50,7 +41,7 @@
       },
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/{{ properties.datatype }}?$filter=ID eq guid'{{ entity.ID }}'"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}?$filter=ID eq guid'{{ entity.ID }}'"
     },
     "update": {
       "headers": {
@@ -58,7 +49,7 @@
       },
       "id_expression": "{{ ID }}",
       "method": "PUT",
-      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}(guid'{{ entity.ID }}')"
     }
   },
   "type": "system:rest",

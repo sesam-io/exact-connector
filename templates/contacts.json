@@ -5,7 +5,7 @@
     "source": {
       "operation": "list",
       "properties": {
-        "datatype": "Contacts"
+        "datatype": "{{ endpoint }}"
       },
       "system": "{{@ system @}}",
       "type": "rest"
@@ -31,51 +31,20 @@
       "dataset": "{{@ system @}}-{{@ datatype @}}-transform",
       "type": "dataset"
     },
-    "transform": [
-      {
-        "rules": {
-          "based-on": [
-            [
-              "copy",
-              "*",
-              [
-                "list",
-                "_*",
-                "$*"
-              ]
-            ]
-          ],
-          "default": [
-            [
-              "add",
-              "$based_on",
-              [
-                "apply",
-                "based-on",
-                "_S."
-              ]
-            ],
-            [
-              "copy",
-              "*"
-            ]
-          ]
-        },
-        "type": "dtl"
-      },
+    "transform": 
       {
         "properties": {
           "operation_delete_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{ endpoint }}"
           },
           "operation_insert_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{ endpoint }}"
           },
           "operation_lookup_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{ endpoint }}"
           },
           "operation_update_properties": {
-            "datatype": "Contacts"
+            "datatype": "{{ endpoint }}"
           },
           "primary_key": "ID",
           "rest_system": "{{@ system @}}",
@@ -84,8 +53,7 @@
         "template": "transform-share-rest",
         "trace": true,
         "type": "template"
-      }
-    ],
+      },
     "type": "pipe"
   }
 ]
