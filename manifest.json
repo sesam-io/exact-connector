@@ -20,6 +20,14 @@
       },
       "template": "templates/contacts.json"
     },
+    "purchaseinvoice": {
+      "parameters": {
+        "endpoint": "PurchaseInvoices",
+        "endpoint_type": "purchase",
+        "id_name": "ID"
+      },
+      "template": "templates/contacts.json"
+    },
     "salesinvoice": {
       "parameters": {
         "endpoint": "SalesInvoices",
