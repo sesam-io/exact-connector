@@ -3,11 +3,12 @@
     "_id": "{{@ system @}}-{{@ datatype @}}-collect",
     "namespaced_identifiers": false,
     "source": {
-      "operation": "list",
+      "operation": "list_{{@ datatype @}}",
       "properties": {
         "datatype": "PurchaseInvoices"
       },
       "system": "{{@ system @}}",
+      "trace": true,
       "type": "rest"
     },
     "type": "pipe"
