@@ -10,6 +10,30 @@
       "system": "{{@ system @}}",
       "type": "rest"
     },
+    "transform": {
+      "rules": {
+        "default": [
+          [
+            "copy",
+            "*"
+          ],
+          ["add", "$last_modified",
+          ["datetime",
+            ["integer",
+              ["multiply",
+                ["integer",
+                  ["replace", {
+                    ")/": "",
+                    "/Date(": ""
+                  }, "_S.Modified"]
+                ], 1000000]
+            ]
+          ]
+        ]
+        ]
+      },
+      "type": "dtl"
+    },
     "type": "pipe"
   },
   {
