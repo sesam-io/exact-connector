@@ -15,67 +15,135 @@
     "transform": {
       "rules": {
         "default": [
-          ["copy", "*"],
-          ["merge",
-            ["apply", "format-date",
-              ["dict", "OrderDate", "_T.OrderDate"]
-            ]
+          [
+            "copy",
+            "*"
           ],
-          ["merge",
-            ["apply", "format-date",
-              ["dict", "Modified", "_T.Modified"]
-            ]
-          ],
-          ["merge",
-            ["apply", "format-date",
-              ["dict", "InvoiceDate", "_T.InvoiceDate"]
-            ]
-          ],
-          ["merge",
-            ["apply", "format-date",
-              ["dict", "DueDate", "_T.DueDate"]
-            ]
-          ],
-          ["merge",
-            ["apply", "format-date",
-              ["dict", "Created", "_T.Created"]
-            ]
-          ],
-          ["add", "$last_modified",
-            ["datetime",
-              ["integer",
-                ["multiply",
-                  ["integer",
-                    ["replace", {
-                      ")/": "",
-                      "/Date(": ""
-                    }, "_S.Modified"]
-                  ], 1000000]
+          [
+            "merge",
+            [
+              "apply",
+              "format-date",
+              [
+                "dict",
+                [
+                  "list",
+                  [
+                    "list",
+                    "OrderDate",
+                    "_T.OrderDate"
+                  ],
+                  [
+                    "list",
+                    "Modified",
+                    "_T.Modified"
+                  ],
+                  [
+                    "list",
+                    "InvoiceDate",
+                    "_T.InvoiceDate"
+                  ],
+                  [
+                    "list",
+                    "DueDate",
+                    "_T.DueDate"
+                  ],
+                  [
+                    "list",
+                    "Created",
+                    "_T.Created"
+                  ],
+                  [
+                    "list",
+                    "StartDate",
+                    "_T.StartDate"
+                  ],
+                  [
+                    "list",
+                    "CustomerSince",
+                    "_T.CustomerSince"
+                  ],
+                  [
+                    "list",
+                    "StatusSince",
+                    "_T.StatusSince"
+                  ],
+                  [
+                    "list",
+                    "EndDate",
+                    "_T.EndDate"
+                  ]
+                ]
               ]
             ]
+          ],
+          [
+            "add",
+            "$last_modified",
+            "_T.Modified"
           ]
         ],
         "format-date": [
-          ["add", "_temp_date",
-            ["key-values", "_S."]
+          [
+            "add",
+            "_temp_date",
+            [
+              "key-values",
+              "_S."
+            ]
           ],
-          ["merge",
-            ["map",
-              ["dict", "_.key",
-                ["datetime",
-                  ["integer",
-                    ["multiply",
-                      ["integer",
-                        ["replace", {
-                          ")/": "",
-                          "/Date(": ""
-                        }, "_.value"]
-                      ], 1000000]
+          [
+            "merge",
+            [
+              "map",
+              [
+                "if",
+                [
+                  "and",
+                  [
+                    "neq",
+                    "_.value",
+                    null
+                  ],
+                  [
+                    "eq",
+                    [
+                      "has-key",
+                      "_.key",
+                      "_P."
+                    ],
+                    false
+                  ]
+                ],
+                [
+                  "dict",
+                  "_.key",
+                  [
+                    "datetime",
+                    [
+                      "integer",
+                      [
+                        "multiply",
+                        [
+                          "integer",
+                          [
+                            "replace",
+                            {
+                              ")/": "",
+                              "/Date(": ""
+                            },
+                            "_.value"
+                          ]
+                        ],
+                        1000000
+                      ]
+                    ]
                   ]
                 ]
-              ], "_T._temp_date"]
-          ],
-          ["remove", "_temp_date"]
+              ],
+              "_T._temp_date"
+            ]
+          ]
         ]
       },
       "type": "dtl"
