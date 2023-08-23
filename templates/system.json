@@ -13,27 +13,24 @@
       "headers": {
         "Accept": "application/json"
       },
-      "id_expression": "{{ ID }}",
       "method": "DELETE",
-      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}(guid'{{ entity['%s' | format(properties.id_name)] }}')"
     },
     "insert": {
       "headers": {
         "Accept": "application/json"
       },
-      "id_expression": "{{ ID }}",
       "method": "POST",
       "payload_property": "d",
-      "url": "CRM/{{ properties.datatype }}"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}"
     },
     "list": {
       "headers": {
         "Accept": "application/json"
       },
-      "id_expression": "{{ ID }}",
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/{{ properties.datatype }}"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}?$select=*"
     },
     "lookup": {
       "headers": {
@@ -41,15 +38,14 @@
       },
       "method": "GET",
       "payload_property": "d.results",
-      "url": "CRM/{{ properties.datatype }}?$filter=ID eq guid'{{ entity.ID }}'"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}?$filter={{ properties.id_name }} eq guid'{{ entity['%s' | format(properties.id_name)] }}'"
     },
     "update": {
       "headers": {
         "Accept": "application/json"
       },
-      "id_expression": "{{ ID }}",
       "method": "PUT",
-      "url": "CRM/{{ properties.datatype }}(guid'{{ entity.ID }}')"
+      "url": "{{ properties.endpoint_type }}/{{ properties.datatype }}(guid'{{ entity['%s' | format(properties.id_name)] }}')"
     }
   },
   "type": "system:rest",
