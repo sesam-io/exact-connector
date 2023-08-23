@@ -6,13 +6,25 @@
   "datatypes": {
     "accounts": {
       "parameters": {
-        "endpoint": "Accounts"
+        "endpoint": "Accounts",
+        "endpoint_type": "CRM",
+        "id_name": "ID"
       },
       "template": "templates/contacts.json"
     },
     "contacts": {
       "parameters": {
-        "endpoint": "Contacts"
+        "endpoint": "Contacts",
+        "endpoint_type": "CRM",
+        "id_name": "ID"
+      },
+      "template": "templates/contacts.json"
+    },
+    "salesinvoice": {
+      "parameters": {
+        "endpoint": "SalesInvoices",
+        "endpoint_type": "salesinvoice",
+        "id_name": "InvoiceID"
       },
       "template": "templates/contacts.json"
     }

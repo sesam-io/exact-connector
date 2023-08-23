@@ -3,9 +3,11 @@
     "_id": "{{@ system @}}-{{@ datatype @}}-collect",
     "namespaced_identifiers": false,
     "source": {
+      "id_expression": "{{ {{@ id_name @}} }}",
       "operation": "list",
       "properties": {
-        "datatype": "{{@ endpoint @}}"
+        "datatype": "{{@ endpoint @}}",
+        "endpoint_type": "{{@ endpoint_type @}}"
       },
       "system": "{{@ system @}}",
       "type": "rest"
@@ -13,23 +15,67 @@
     "transform": {
       "rules": {
         "default": [
-          [
-            "copy",
-            "*"
+          ["copy", "*"],
+          ["merge",
+            ["apply", "format-date",
+              ["dict", "OrderDate", "_T.OrderDate"]
+            ]
+          ],
+          ["merge",
+            ["apply", "format-date",
+              ["dict", "Modified", "_T.Modified"]
+            ]
+          ],
+          ["merge",
+            ["apply", "format-date",
+              ["dict", "InvoiceDate", "_T.InvoiceDate"]
+            ]
+          ],
+          ["merge",
+            ["apply", "format-date",
+              ["dict", "DueDate", "_T.DueDate"]
+            ]
+          ],
+          ["merge",
+            ["apply", "format-date",
+              ["dict", "Created", "_T.Created"]
+            ]
           ],
           ["add", "$last_modified",
-          ["datetime",
-            ["integer",
-              ["multiply",
-                ["integer",
-                  ["replace", {
-                    ")/": "",
-                    "/Date(": ""
-                  }, "_S.Modified"]
-                ], 1000000]
+            ["datetime",
+              ["integer",
+                ["multiply",
+                  ["integer",
+                    ["replace", {
+                      ")/": "",
+                      "/Date(": ""
+                    }, "_S.Modified"]
+                  ], 1000000]
+              ]
             ]
           ]
-        ]
+        ],
+        "format-date": [
+          ["add", "_temp_date",
+            ["key-values", "_S."]
+          ],
+          ["merge",
+            ["map",
+              ["dict", "_.key",
+                ["datetime",
+                  ["integer",
+                    ["multiply",
+                      ["integer",
+                        ["replace", {
+                          ")/": "",
+                          "/Date(": ""
+                        }, "_.value"]
+                      ], 1000000]
+                  ]
+                ]
+              ], "_T._temp_date"]
+          ],
+          ["remove", "_temp_date"]
         ]
       },
       "type": "dtl"
@@ -55,29 +101,35 @@
       "dataset": "{{@ system @}}-{{@ datatype @}}-transform",
       "type": "dataset"
     },
-    "transform": 
-      {
-        "properties": {
-          "operation_delete_properties": {
-            "datatype": "{{@ endpoint @}}"
-          },
-          "operation_insert_properties": {
-            "datatype": "{{@ endpoint @}}"
-          },
-          "operation_lookup_properties": {
-            "datatype": "{{@ endpoint @}}"
-          },
-          "operation_update_properties": {
-            "datatype": "{{@ endpoint @}}"
-          },
-          "primary_key": "ID",
-          "rest_system": "{{@ system @}}",
-          "share_dataset": "{{@ system @}}-{{@ datatype @}}-share"
+    "transform": {
+      "properties": {
+        "id_expression": "{{ {{@ id_name @}} }}",
+        "operation_delete_properties": {
+          "datatype": "{{@ endpoint @}}",
+          "endpoint_type": "{{@ endpoint_type @}}",
+          "id_name": "{{@ id_name @}}"
         },
-        "template": "transform-share-rest",
-        "type": "template"
-      }
-    ,
+        "operation_insert_properties": {
+          "datatype": "{{@ endpoint @}}",
+          "endpoint_type": "{{@ endpoint_type @}}"
+        },
+        "operation_lookup_properties": {
+          "datatype": "{{@ endpoint @}}",
+          "endpoint_type": "{{@ endpoint_type @}}",
+          "id_name": "{{@ id_name @}}"
+        },
+        "operation_update_properties": {
+          "datatype": "{{@ endpoint @}}",
+          "endpoint_type": "{{@ endpoint_type @}}",
+          "id_name": "{{@ id_name @}}"
+        },
+        "primary_key": "{{@ id_name @}}",
+        "rest_system": "{{@ system @}}",
+        "share_dataset": "{{@ system @}}-{{@ datatype @}}-share"
+      },
+      "template": "transform-share-rest",
+      "type": "template"
+    },
     "type": "pipe"
   }
 ]
