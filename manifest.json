@@ -43,6 +43,14 @@
         "id_name": "ID"
       },
       "template": "templates/contacts.json"
+    },
+    "journals": {
+      "parameters": {
+        "endpoint": "Journals",
+        "endpoint_type": "financial",
+        "id_name": "ID"
+      },
+      "template": "templates/contacts.json"
     }
   },
   "oauth2": {
