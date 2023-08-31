@@ -67,6 +67,14 @@
         "id_name": "ID"
       },
       "template": "templates/contacts.json"
+    },
+    "purchaseinvoicelines": {
+      "parameters": {
+        "endpoint": "PurchaseInvoiceLines",
+        "endpoint_type": "purchase",
+        "id_name": "ID"
+      },
+      "template": "templates/purchaseInvoiceLines.json"
     }
   },
   "oauth2": {
