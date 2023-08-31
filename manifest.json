@@ -35,6 +35,14 @@
         "id_name": "InvoiceID"
       },
       "template": "templates/contacts.json"
+    },
+    "salesinvoicelines": {
+      "parameters": {
+        "endpoint": "SalesInvoiceLines",
+        "endpoint_type": "salesinvoice",
+        "id_name": "ID"
+      },
+      "template": "templates/contacts.json"
     }
   },
   "oauth2": {
