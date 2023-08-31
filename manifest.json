@@ -52,6 +52,14 @@
       },
       "template": "templates/contacts.json"
     },
+    "glaccounts": {
+      "parameters": {
+        "endpoint": "GLAccounts",
+        "endpoint_type": "financial",
+        "id_name": "ID"
+      },
+      "template": "templates/contacts.json"
+    },
     "items": {
       "parameters": {
         "endpoint": "Items",
