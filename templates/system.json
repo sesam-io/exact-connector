@@ -49,6 +49,6 @@
     }
   },
   "type": "system:rest",
-  "url_pattern": "https://start.exactonline.co.uk/api/v1/128132/%s",
+  "url_pattern": "https://start.exactonline.nl/api/v1/{{@ account_id @}}/%s",
   "verify_ssl": false
 }
