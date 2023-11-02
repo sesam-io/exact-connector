@@ -1,5 +1,6 @@
 {
   "additional_parameters": {
+    "base_url": {},
     "token_url": {}
   },
   "auth": "oauth2",
