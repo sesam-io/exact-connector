@@ -3,6 +3,7 @@
     "token_url": {}
   },
   "auth": "oauth2",
+  "auth_variant": "exactonline",
   "datatypes": {
     "accounts": {
       "parameters": {
